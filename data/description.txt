@@ -1,0 +1,30 @@
+Dataset Description:
+
+1) ID: Unique identification of an entry
+2) Customer_ID: Unique identification of a person
+3) Month: Month of the year
+4) Name: Name of a person
+5) Age: Age of a person
+6) SSN: Social security of a person
+7) Occupation: occupation of a person
+8) Annual Income: Annual income of a person
+9) Monthly_inhand_salary: Monthly base salary of a person
+10) Num_bank_accounts: number of bank accounts a person holding
+11) Num_credit_Card: number of other credit cards held by a person
+12) interest rate: interest rate on credit card
+13) num_of_loan: number of loans taken from the bank
+14) type_of_loan: types of loan taken by a person
+15) delay_From_due_date: average number of days delayed from the payment date
+16) num_of_Delayed_payment: average number of payments delayed by a person
+17) changed_credit_limit: percentage change in credit card limit
+18) num_Credit_inquiries: number of credit card inquiries
+19) credit_mix: classification of the mix of credits
+20) outstanding_Debt: remianing debt to be paid 
+21) credit_utilization_Ratio: utilization ratio of credit card
+22) credit_history_Age: age of credit history of the person
+23) payment_of_min_amount: whether only the minimum amount was paid by the person
+24) total_Emi_per_month: monthly EMI payments (Equated Monthly Instalment)
+25) Amount_invested_monthly: monthly amount invested by the customer
+26) payment_behaviour: payment behavior of the customer
+27) monthly_balance: monthly balance amount of the customer
+28) credit score: bracket of credit score (poor, standard, good)
