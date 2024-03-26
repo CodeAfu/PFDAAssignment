@@ -1,5 +1,6 @@
 <details><summary>
-TODO LIST:
+<h5>TODO LIST:</h5>
 </summary>
-- Select 4 independent variables
+- Create Hypothesis and Objectives
+    - Select 4 independent variables
 </details>
