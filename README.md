@@ -16,25 +16,25 @@
 
 ## TODO LIST:
 <details><summary>
-- Create Hypothesis and Objectives ✅
+Create Hypothesis and Objectives ✅
 </summary>
-    - Select 4 independent variables ✅
+- Select 4 independent variables ✅
 </details>
 
 <details><summary>
-- Clean Data
+Clean Data
 </summary>
-    - Total_EMI_per_month:
-        - Round off to 2DP
-        - Remove nulls
-        - Identify outliers
-    - Delay_from_due_date: 
-        - Deal with negative values
-        - Identify outliers
-    - Interest_Rate: 
-        - Do something about the crazy interest rates?
-    - Outstanding_Debt: 
-        - Deal with nulls
-        - Remove unnecessary characters
-        - Convert to Numeric
+- Total_EMI_per_month:
+    - Round off to 2DP
+    - Remove nulls
+    - Identify outliers
+- Delay_from_due_date: 
+    - Deal with negative values
+    - Identify outliers
+- Interest_Rate: 
+    - Do something about the crazy interest rates?
+- Outstanding_Debt: 
+    - Deal with nulls
+    - Remove unnecessary characters
+    - Convert to Numeric
 </details>
