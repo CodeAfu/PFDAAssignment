@@ -1,16 +1,27 @@
 library(tidyverse)
+# library(dplyr)
 
-credit_score <- read.csv(".\\data\\credit_score.csv")
-attach(credit_score)
+filepath <- "./data/credit_score.csv"
+df <- read.csv(filepath)
+df1 = read.csv(filepath, stringsAsFactors = TRUE)
+attach(df)
 
-View(credit_score)
+View(df)
 
-glimpse(credit_score)
-class(credit_score$Annual_Income)
-unique(credit_score$Total_EMI_per_month)
-unique(credit_score$Delay_from_due_date)
-unique(credit_score$Interest_Rate)
-unique(credit_score$Outstanding_Debt)
+glimpse(df)
+
+head(df, 10)
+tail(df)
+
+summary(df)
+
+class(df$Annual_Income)
+unique(df$Total_EMI_per_month)
+unique(df$Delay_from_due_date)
+unique(df$Interest_Rate)
+unique(df$Outstanding_Debt)
 
 lm(Left.Thalamus.Proper ~ Age)
 
+glimpse(df$Interest_Rate)
+?read.csv()
