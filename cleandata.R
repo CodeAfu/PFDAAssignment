@@ -18,7 +18,7 @@ clean_total_emi_per_month <- function() {
 
 
 df = read.csv("./data/credit_score.csv")
-df_str_as_fact = read.csv("./data/credit_score.csv")
+df_str_as_fact = read.csv("./data/credit_score.csv", stringsAsFactor = TRUE)
 View(df)
 
 
