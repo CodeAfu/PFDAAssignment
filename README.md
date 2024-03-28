@@ -32,8 +32,8 @@
 ```
 >>> git checkout main
 >>> git merge samplebranch
+>>> git branch -d samplebranch  // -D for forced delete
 ```
-
 
 ## TODO LIST:
 <details><summary>
