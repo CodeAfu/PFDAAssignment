@@ -5,7 +5,7 @@
 * Outstanding_Debt
 * Total_EMI_per_month <br>
 
- <h3><b><u>Customers with high Delay_from_due_date, high Interest Rate, high Outstanding_Debt, and high Total_EMI_per_month have a low credit score</u></b></h3>
+ <h3><b><u>Customers with high Delay_from_due_date, high Interest_Rate, high Outstanding_Debt, and high Total_EMI_per_month have a low credit score</u></b></h3>
 
 ## Objectives
 - To investigate the impact of Delay_from_due_date to the credit score
@@ -30,6 +30,7 @@ Create Hypothesis and Objectives ✅
 Clean Data <--- CURRENT WORK
 </summary>
 <ul>
+
 <li>
 Total_EMI_per_month:
     <ul>
@@ -38,6 +39,7 @@ Total_EMI_per_month:
         <li>Identify outliers</li>
     </ul>
 </li>
+
 <li>
 Delay_from_due_date: 
     <ul>
@@ -45,24 +47,36 @@ Delay_from_due_date:
         <li>Identify outliers</li>
     </ul>
 </li>
+
 <li>
 Interest_Rate: 
     <ul>
         <li>Do something about the crazy interest rates?</li>
     </ul>
 </li>
+
 <li>
 Outstanding_Debt: 
     <ul>
-        <li>Deal with nulls</li> ❌
-        <li>Remove unnecessary characters</li> ✅
-        <li>Convert to Numeric</li> ✅
+        <li>Deal with nulls ❌</li>
+        <li>Remove unnecessary characters ✅</li>
+        <li>Convert to Numeric ✅</li>
     </ul>
 </li>
+
 </ul>
 </details>
 
 ## How to work on this repo
+
+If you are using vscode, add the following to settings.json:
+```json
+    "editor.tabSize": 4,
+    "[r]": {
+        "editor.tabSize": 2
+    },
+```
+
 1. Pull latest progress from the remote repository.
 ```bash
 ### SAFER IF YOU ARE EXPECTING CONFLICTS
