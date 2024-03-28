@@ -3,15 +3,12 @@ library(tidyverse)
 
 filepath <- "./data/credit_score.csv"
 df <- read.csv(filepath)
-df1 = read.csv(filepath, stringsAsFactors = TRUE)
+df1 <- read.csv(filepath, stringsAsFactors = TRUE)
 attach(df)
 
 View(df)
 
 glimpse(df)
-
-head(df, 10)
-tail(df)
 
 summary(df)
 
@@ -24,4 +21,3 @@ unique(df$Outstanding_Debt)
 lm(Left.Thalamus.Proper ~ Age)
 
 glimpse(df$Interest_Rate)
-?read.csv()

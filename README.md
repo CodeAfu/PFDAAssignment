@@ -24,17 +24,35 @@ Create Hypothesis and Objectives ✅
 <details><summary>
 Clean Data
 </summary>
-- Total_EMI_per_month:
-    - Round off to 2DP
-    - Remove nulls
-    - Identify outliers
-- Delay_from_due_date: 
-    - Deal with negative values
-    - Identify outliers
-- Interest_Rate: 
-    - Do something about the crazy interest rates?
-- Outstanding_Debt: 
-    - Deal with nulls
-    - Remove unnecessary characters
-    - Convert to Numeric
+<ul>
+<li>
+Total_EMI_per_month:
+    <ul>
+        <li>Round off to 2DP</li>
+        <li>Remove nulls</li>
+        <li>Identify outliers</li>
+    </ul>
+</li>
+<li>
+Delay_from_due_date: 
+    <ul>
+        <li>Deal with negative values</li>
+        <li>Identify outliers</li>
+    </ul>
+</li>
+<li>
+Interest_Rate: 
+    <ul>
+        <li>Do something about the crazy interest rates?</li>
+    </ul>
+</li>
+<li>
+Outstanding_Debt: 
+    <ul>
+        <li>Deal with nulls</li>
+        <li>Remove unnecessary characters</li>
+        <li>Convert to Numeric</li>
+    </ul>
+</li>
+</ul>
 </details>
