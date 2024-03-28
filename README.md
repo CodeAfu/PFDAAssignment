@@ -1,11 +1,11 @@
 ## Hypothesis
-* <b><u>Independent Variables: </u></b> 
-    * Delay_from_due_date, 
-    * Interest_Rate, 
-    * Outstanding_Debt, 
-    * Total_EMI_per_month
+ <b><u>Independent Variables: </u></b> 
+* Delay_from_due_date
+* Interest_Rate 
+* Outstanding_Debt
+* Total_EMI_per_month <br>
 
-- <b>Customers with high Delay_from_due_date, high Interest Rate, high Outstanding_Debt, and high Total_EMI_per_month have a low credit score</b>
+ <h3><b><u>Customers with high Delay_from_due_date, high Interest Rate, high Outstanding_Debt, and high Total_EMI_per_month have a low credit score</u></b></h3>
 
 ## Objectives
 - To investigate the impact of Delay_from_due_date to the credit score
@@ -14,7 +14,8 @@
 - To investigate the impact of Total_EMI_per_month to the credit score
 
 ## Tasks
-- Ibrahim: Clean **Outstanding_Debt** 
+- **Ibrahim:** Clean **Outstanding_Debt** 
+- **Ruhit:** 
 
 ## TODO LIST:
 <details><summary>
@@ -53,9 +54,9 @@ Interest_Rate:
 <li>
 Outstanding_Debt: 
     <ul>
-        <li>Deal with nulls</li>
-        <li>Remove unnecessary characters</li>
-        <li>Convert to Numeric</li>
+        <li>Deal with nulls</li> ❌
+        <li>Remove unnecessary characters</li> ✅
+        <li>Convert to Numeric</li> ✅
     </ul>
 </li>
 </ul>
@@ -63,27 +64,27 @@ Outstanding_Debt:
 
 ## How to work on this repo
 1. Pull latest progress from the remote repository.
-```
-**SAFER IF YOU ARE EXPECTING CONFLICTS**
+```bash
+### SAFER IF YOU ARE EXPECTING CONFLICTS
+>>> git diff origin/main    # Replace main with branch name, review changes
+>>> git merge               # FETCH_HEAD
 >>> git fetch
->>> git diff origin/main    // Replace main with branch name, review changes
->>> git merge               // FETCH_HEAD
 
-**OR**
+### OR
 >>> git pull        
 ```
 2. Create and work on new branch on your local repository. 
-```
->>> git branch samplebranch     // Create new branch
->>> git checkout samplebranch   // Use new branch
+```bash
+>>> git branch samplebranch     # Create new branch
+>>> git checkout samplebranch   # Use new branch
 ```
 3. Commit progress after each session
-```
+```bash
 >>> git commit -m "Commit message"
 ```
 4. Merge contents to main branch once feature is complete and free of bugs
-```
+```bash
 >>> git checkout main
 >>> git merge samplebranch
->>> git branch -d samplebranch  // -D for forced delete
+>>> git branch -d samplebranch  # -D for forced delete
 ```
