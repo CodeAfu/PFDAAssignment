@@ -7,33 +7,14 @@
 
 - <b>Customers with high Delay_from_due_date, high Interest Rate, high Outstanding_Debt, and high Total_EMI_per_month have a low credit score</b>
 
-
 ## Objectives
 - To investigate the impact of Delay_from_due_date to the credit score
 - To investigate the impact of Interest_Rate to the credit score
 - To investigate the impact of Outstanding_Debt to the credit score
 - To investigate the impact of Total_EMI_per_month to the credit score
 
-## How to work on this repo?
-1. Pull latest progress from the remote repository.
-```
->>> git pull        // Deal with conflicts if necessary 
-```
-2. Create and work on new branch on your local repository. 
-```
->>> git branch samplebranch     // Create new branch
->>> git checkout samplebranch   // Use new branch
-```
-3. Commit progress after each session
-```
->>> git commit -m "Commit message"
-```
-4. Merge contents to main branch once feature is complete and free of bugs
-```
->>> git checkout main
->>> git merge samplebranch
->>> git branch -d samplebranch  // -D for forced delete
-```
+## Tasks
+- Ibrahim: Clean **Outstanding_Debt** 
 
 ## TODO LIST:
 <details><summary>
@@ -45,7 +26,7 @@ Create Hypothesis and Objectives ✅
 </details>
 
 <details><summary>
-Clean Data
+Clean Data <--- CURRENT WORK
 </summary>
 <ul>
 <li>
@@ -79,3 +60,30 @@ Outstanding_Debt:
 </li>
 </ul>
 </details>
+
+## How to work on this repo
+1. Pull latest progress from the remote repository.
+```
+**SAFER IF YOU ARE EXPECTING CONFLICTS**
+>>> git fetch
+>>> git diff origin/main    // Replace main with branch name, review changes
+>>> git merge               // FETCH_HEAD
+
+**OR**
+>>> git pull        
+```
+2. Create and work on new branch on your local repository. 
+```
+>>> git branch samplebranch     // Create new branch
+>>> git checkout samplebranch   // Use new branch
+```
+3. Commit progress after each session
+```
+>>> git commit -m "Commit message"
+```
+4. Merge contents to main branch once feature is complete and free of bugs
+```
+>>> git checkout main
+>>> git merge samplebranch
+>>> git branch -d samplebranch  // -D for forced delete
+```
