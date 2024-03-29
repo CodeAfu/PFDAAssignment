@@ -15,7 +15,6 @@
 
 ## Tasks
 - **Ibrahim:** Clean **Outstanding_Debt** 
-- **Ruhit:** 
 
 ## TODO LIST:
 <details><summary>
@@ -69,7 +68,7 @@ Outstanding_Debt:
 
 ## How to work on this repo
 
-If you are using vscode, add the following to settings.json:
+*If you are using vscode, add the following to settings.json:*
 ```json
     "editor.tabSize": 4,
     "[r]": {
@@ -96,9 +95,22 @@ If you are using vscode, add the following to settings.json:
 ```bash
 >>> git commit -m "Commit message"
 ```
-4. Merge contents to main branch once feature is complete and free of bugs
+4. Push newly finished content to the remote repository
+```bash
+### main branch
+>>> git push
+### other branches
+>>> git push origin samplebranch
+```
+5. Merge contents to main branch once feature is complete and free of bugs
 ```bash
 >>> git checkout main
 >>> git merge samplebranch
 >>> git branch -d samplebranch  # -D for forced delete
+```
+
+#### **Extras**
+```bash
+### Remove branch from remote repository
+>>> git push <remote_name> --delete <branch_name>
 ```
