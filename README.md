@@ -102,12 +102,8 @@ Outstanding_Debt:
 ### other branches
 >>> git push origin samplebranch
 ```
-5. Merge contents to main branch once feature is complete and free of bugs
-```bash
->>> git checkout main
->>> git merge samplebranch
->>> git branch -d samplebranch  # -D for forced delete
-```
+5. Create Pull Request on the github repository once the feature is complete
+    - Check the github repository online and send pull request for the branch
 
 #### **Extras**
 ```bash

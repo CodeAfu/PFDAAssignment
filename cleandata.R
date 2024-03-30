@@ -3,10 +3,10 @@ library(tidyverse)
 clean_dataframe <- function(df) {
   df %>%
     mutate(across(c(Occupation, Credit_Mix, Num_of_Delayed_Payment, Outstanding_Debt, Changed_Credit_Limit), 
-                  ~ str_replace_all(., "_", "")), # Remove _ from selected Columns
+                  ~ str_replace_all(., "_", "")), # Remove _ from all Columns
            across(c(Delay_from_due_date, Num_of_Delayed_Payment), 
                   ~ if_else(is.na(.), NA_character_, as.character(.)) %>%
-                    str_replace_all("-", ""))) # Remove - from selected columns, deal with resulting nulls
+                    str_replace_all("-", ""))) # Remove - from all columns, deal with resulting nulls
   
   # Deal with null values (INCOMPLETE)
   # df$Num_of_Delayed_Payment <- as.numeric(df$Num_of_Delayed_Payment)
@@ -51,3 +51,6 @@ cust_df %>%
 
 glimpse(cust_df)
 
+cust_df %>%
+  filter(!complete.cases(.)) %>%
+  View()
