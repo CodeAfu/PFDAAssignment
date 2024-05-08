@@ -16,6 +16,46 @@
 ## Tasks
 - **Ibrahim:** Clean **Outstanding_Debt** 
 
+## Clean Tasks:
+Default Null String Value = NULL
+- Age, Num_of_Loan, Num_of_Delayed_Payment, (chr)
+    - Remove characters -, _ ✅
+    - Convert to integer ✅
+    - Handle null
+    - Fix Outliers
+- Occupation (chr)
+    - Set _______ to normalized null string value
+- Annual_Income, Num_of_Delayed_Payment, Outstanding_Debt, Monthly_Balance (chr)
+    - Remove _
+    - Convert to double
+    - Fix Outliers
+- Monthly_Inhand_Salary, Changed_Credit_Limit (dbl)
+    - Fix Outliers
+- Num_Bank_Accounts, Num_Credit_Cards, Interest_Rate, (int)
+    - Fix Outliers, 
+    - Set -1 values to null
+- Delay_from_due_date (int)
+    - Set -1 to null
+    - Set other negatives to positive
+    - Fix Outliers
+- Credit_Mix, Payment_of_Min_Amount (str)
+    - Remove _
+    - Convert to factor
+- Credit_Utilization_Ratio (dbl)
+    - Fix Outliers (I think nothing here)
+- Credit_History_Age (chr) **(Possible ignore)**
+    - Convert to Integer (grab year only)
+- Total_EMI_per_month (dbl) **UNSURE WHAT TO DO**
+    - Fix Outliers
+- Amount_invested_monthly (chr)
+    - Convert to dbl
+- Payment_Behaviour (chr)
+    - Convert to factor
+    - Change !@9#%8 to default string null value
+- Monthly_Balance (chr)
+    - Remove weird characters if exists
+    - Convert to double
+
 ## TODO LIST:
 <details><summary>
 Create Hypothesis and Objectives ✅
@@ -80,8 +120,8 @@ Outstanding_Debt:
 ```bash
 ### SAFER IF YOU ARE EXPECTING CONFLICTS
 >>> git diff origin/main    # Replace main with branch name, review changes
->>> git merge               # FETCH_HEAD
->>> git fetch
+>>> git fetch               # FETCH_HEAD
+>>> git merge
 
 ### OR
 >>> git pull        
