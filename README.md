@@ -13,11 +13,27 @@
 - To investigate the impact of Outstanding_Debt to the credit score
 - To investigate the impact of Total_EMI_per_month to the credit score
 
+## TODO
+- Clean Data ❗
+    - total_emi_per_month **(cleaning approach can be alot better)**
+    - amount_invested_monthly **(review please)**
+- Deal with nulls properly ❌
+    - monthly_inhand_salary
+    - interest_rate
+    - num_of_loan 
+    - delay_from_due_date
+    - num_of_delayed_payment
+    - changed_credit_limit
+    - num_credit_inquiries **(need to check clean method for this)**
+    - payment_of_min_amount **(unsure if need to do anything)**
+
+
+
 ## Clean Tasks:
 Default Null String Value = NULL
 - Age, Num_of_Loan, Num_of_Delayed_Payment, (chr)
-    - Remove characters -, _ ✅
-    - Convert to integer ✅
+    - Remove characters -, _
+    - Convert to integer
     - Handle null
     - Fix Outliers
 - Occupation (chr)

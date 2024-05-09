@@ -13,7 +13,7 @@ clean_df_chars <- function(df) {
 
   output <- df %>%
     mutate(across(
-      starts_with(c("occupation", "credit_mix", "num_of_delayed_payment", "outstanding_debt", "changed_credit_limit", "age")),
+      starts_with(c("annual_income", "occupation", "credit_mix", "num_of_delayed_payment", "outstanding_debt", "changed_credit_limit", "age")),
       ~ gsub("[-_]", "", .)
   ))
 
@@ -40,7 +40,7 @@ clean_occupation <- function(df) {
 convert_chrtodbl <- function(df) {
   output <- df %>%
     mutate(across(
-      starts_with(c("changed_credit_limit", "outstanding_debt", "amount_invested_monthly", "monthly_balance")),
+      starts_with(c("annual_income", "changed_credit_limit", "outstanding_debt", "amount_invested_monthly", "monthly_balance")),
       ~ na_if(., as.character(!grepl("^(0|[1-9][0-9]*)$", .))) %>%
       as.double
   ))
@@ -59,6 +59,11 @@ clean_num_credit_cards <- function(df) {
   return(df)
 }
 
+clean_interest_rate <- function(df) {
+  df$interest_rate <- replace(df$interest_rate, df$interest_rate > 34, NA)
+  return(df)
+}
+
 clean_delay_from_due_date <- function(df) {
   df$delay_from_due_date <- replace(df$delay_from_due_date, df$delay_from_due_date < 0, NA)
   return(df)
@@ -69,27 +74,44 @@ clean_num_of_delayed_payment <- function(df) {
   return(df)
 }
 
+clean_num_credit_inquiries <- function(df) {
+  df$num_credit_inquiries <- replace(df$num_credit_inquiries, df$num_credit_inquiries > 17, 17)
+  return(df)
+}
+
+clean_total_emi_per_month <- function(df) {
+  df$total_emi_per_month <- replace(df$total_emi_per_month, df$total_emi_per_month > 600, 600)
+  return(df)
+}
+
+clean_amount_invested_monthly <- function(df) {
+  df$amount_invested_monthly <- replace(df$amount_invested_monthly, df$amount_invested_monthly > 1500, 1500)
+  df$amount_invested_monthly <- replace(df$amount_invested_monthly, is.na(df$amount_invested_monthly) , 0)
+  return(df)
+}
+
 clean_num_of_loan <- function(df) {
   df$num_of_loan <- replace(df$num_of_loan, df$num_of_loan < 0, NA)
+  df$num_of_loan <- replace(df$num_of_loan, df$num_of_loan > 9, 9)
   return(df)
 }
 
 convert_strtofact <- function(df) {
   df$credit_mix <- df$credit_mix %>%
     na_if(., "") %>%
-    as.factor
+    as.factor()
 
   df$occupation <- df$occupation %>%
     na_if(., "") %>%
-    as.factor
+    as.factor()
 
   df$payment_of_min_amount <- df$payment_of_min_amount %>%
     na_if(., "NM") %>%
-    as.factor
+    as.factor()
 
   df$payment_behaviour <- df$payment_behaviour %>%
     na_if(., "!@9#%8") %>%
-    as.factor
+    as.factor()
 
   return(df)
 }
