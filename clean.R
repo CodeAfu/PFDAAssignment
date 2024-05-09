@@ -2,7 +2,7 @@ library(tidyverse)
 library(stringr)
 
 
-clean_df_chrs <- function(df) {
+clean_df_chars <- function(df) {
   # output <- df %>%
   #   mutate(across(c(Occupation, Credit_Mix, Num_of_Delayed_Payment, Outstanding_Debt, 
   #                       Changed_Credit_Limit, Age), 
@@ -49,17 +49,28 @@ convert_chrtodbl <- function(df) {
 
 clean_num_bank_accounts <- function(df) {
   df$num_bank_accounts <- replace(df$num_bank_accounts, df$num_bank_accounts > 10, 10)
-  df$num_bank_accounts <- replace(df$num_bank_accounts, df$num_bank_accounts < 0,  0)
+  df$num_bank_accounts <- replace(df$num_bank_accounts, df$num_bank_accounts < 0,  NA)
   return(df)
 }
 
 clean_num_credit_cards <- function(df) {
   df$num_credit_card <- replace(df$num_credit_card, df$num_credit_card > 11, 11)
+  df$num_credit_card <- replace(df$num_credit_card, df$num_credit_card < 0, NA)
   return(df)
 }
 
 clean_delay_from_due_date <- function(df) {
-  df$delay_from_due_date <- replace(df$delay_from_due_date, df$delay_from_due_date < 0, 0)
+  df$delay_from_due_date <- replace(df$delay_from_due_date, df$delay_from_due_date < 0, NA)
+  return(df)
+}
+
+clean_num_of_delayed_payment <- function(df) {
+  df$num_of_delayed_payment <- replace(df$num_of_delayed_payment, df$num_of_delayed_payment > 28, 28)
+  return(df)
+}
+
+clean_num_of_loan <- function(df) {
+  df$num_of_loan <- replace(df$num_of_loan, df$num_of_loan < 0, NA)
   return(df)
 }
 
@@ -81,23 +92,5 @@ convert_strtofact <- function(df) {
     as.factor
 
   return(df)
-}
-
-
-
-clean_interest_rate <- function(df) {
-}
-
-clean_outstanding_debt <- function(df) {
-  df %>%
-    mutate(outstanding_debt = str_replace(outstanding_debt, "_$", ""))
-
-  df$outstanding_debt <- as.numeric(df$outstanding_debt)
-
-  return(df)
-}
-
-clean_total_emi_per_month <- function(df) {
-
 }
 
