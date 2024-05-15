@@ -14,8 +14,8 @@
 - To investigate the impact of Total_EMI_per_month to the credit score
 
 ## TODO
-✅ = COMPLETED
-❗ = IN PROGRESS
+✅ = COMPLETED <br>
+❗ = IN PROGRESS <br>
 ❓ = REVIEW 
 - Clean Data ❓
     - total_emi_per_month **(cleaning approach can be alot better)**
