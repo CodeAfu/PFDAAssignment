@@ -14,16 +14,19 @@
 - To investigate the impact of Total_EMI_per_month to the credit score
 
 ## TODO
-- Clean Data ❗
+✅ = COMPLETED
+❗ = IN PROGRESS
+❓ = REVIEW 
+- Clean Data ❓
     - total_emi_per_month **(cleaning approach can be alot better)**
     - amount_invested_monthly **(review please)**
 - Deal with nulls properly ❌
     - monthly_inhand_salary (dbl) - Data is slightly skewed so use **median**
     - interest_rate (int) - Data resembles normal distribution, so use **mean**
     - num_of_loan (int) - Common number of loans, Predictive Imputation ✅
-    - delay_from_due_date (int) - Data slightly skewed, **median**
-    - num_of_delayed_payment (int) - Normal Distribution, **mean**
-    - changed_credit_limit (dbl) - Data skewed, **median**
+    - delay_from_due_date (int) - Data slightly skewed, **median** ✅
+    - num_of_delayed_payment (int) - Normal Distribution, **mode**
+    - changed_credit_limit (dbl) - Data skewed, **median** ✅
     - num_credit_inquiries (dbl) - Data Skewed, **median** **(need to check clean method for this)**
     - payment_of_min_amount (fct) **(unsure if need to do anything)**
 

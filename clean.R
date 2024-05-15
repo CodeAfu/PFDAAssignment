@@ -69,6 +69,10 @@ clean_interest_rate <- function(df) {
 
 clean_delay_from_due_date <- function(df) {
   df$delay_from_due_date <- replace(df$delay_from_due_date, df$delay_from_due_date < 0, NA)
+  
+  df$delay_from_due_date <- ifelse(is.na(df$delay_from_due_date),
+                                   is.integer(median(df$delay_from_due_date, na.rm = TRUE)),
+                                   df$delay_from_due_date) 
   return(df)
 }
 
@@ -91,6 +95,13 @@ clean_total_emi_per_month <- function(df) {
 clean_amount_invested_monthly <- function(df) {
   df$amount_invested_monthly <- replace(df$amount_invested_monthly, df$amount_invested_monthly > 1500, 1500)
   df$amount_invested_monthly <- replace(df$amount_invested_monthly, is.na(df$amount_invested_monthly) , 0)
+  return(df)
+}
+
+clean_changed_credit_limit <- function(df) {
+  df$changed_credit_limit <- ifelse(is.na(df$changed_credit_limit),
+                                    median(df$changed_credit_limit, na.rm = TRUE),
+                                    df$changed_credit_limit)
   return(df)
 }
 
