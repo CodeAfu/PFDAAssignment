@@ -1,4 +1,5 @@
 library(tidyverse)
+library(mice)
 library(stringr)
 
 
@@ -94,9 +95,22 @@ clean_amount_invested_monthly <- function(df) {
 }
 
 clean_num_of_loan <- function(df) {
+  # Predictive Imputation
+  relevant_features <- df %>% select(age, annual_income, monthly_inhand_salary, num_bank_accounts, num_credit_card, 
+                                    interest_rate, delay_from_due_date, num_of_delayed_payment, changed_credit_limit, 
+                                    num_credit_inquiries, outstanding_debt, credit_utilization_ratio, total_emi_per_month, 
+                                    amount_invested_monthly, monthly_balance)
+
+  df_for_imputation <- cbind(relevant_features, num_of_loan = df$num_of_loan)
+  imputed_data <- mice(df_for_imputation, method = 'norm.predict', m = 1, maxit = 5, seed = 123)
+  completed_data <- complete(imputed_data, 1)
+  df$num_of_loan = as.integer(completed_data$num_of_loan)
+
+  # Cleanup
   df$num_of_loan <- replace(df$num_of_loan, df$num_of_loan < 0, NA_integer_)
   df$num_of_loan <- replace(df$num_of_loan, df$num_of_loan > 9, 9)
   df$num_of_loan <- as.integer(df$num_of_loan)
+
   return(df)
 }
 
