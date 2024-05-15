@@ -18,14 +18,14 @@
     - total_emi_per_month **(cleaning approach can be alot better)**
     - amount_invested_monthly **(review please)**
 - Deal with nulls properly ❌
-    - monthly_inhand_salary
-    - interest_rate
-    - num_of_loan 
-    - delay_from_due_date
-    - num_of_delayed_payment
-    - changed_credit_limit
-    - num_credit_inquiries **(need to check clean method for this)**
-    - payment_of_min_amount **(unsure if need to do anything)**
+    - monthly_inhand_salary (dbl)
+    - interest_rate (int)
+    - num_of_loan (int)
+    - delay_from_due_date (int)
+    - num_of_delayed_payment (int)
+    - changed_credit_limit (dbl)
+    - num_credit_inquiries (dbl) **(need to check clean method for this)**
+    - payment_of_min_amount (fct) **(unsure if need to do anything)**
 
 
 

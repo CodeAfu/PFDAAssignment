@@ -22,10 +22,12 @@ clean_df_chars <- function(df) {
 
 convert_chrtoint <- function(df) {
   output <- df %>%
-  mutate(across(
-    starts_with(c("age", "num_of_loan", "num_of_delayed_payment")),
-    ~ na_if(., as.character(!grepl("^(0|[1-9][0-9]*)$", .))) %>%
-    as.integer
+    mutate(across(
+      starts_with(c("age", "num_of_loan", "num_of_delayed_payment")),
+      ~ {
+        . <- ifelse(grepl("^(0|[1-9][0-9]*)$", .), ., NA)
+        as.integer(.)
+      }
   ))
   return(output)
 }
@@ -42,7 +44,7 @@ convert_chrtodbl <- function(df) {
     mutate(across(
       starts_with(c("annual_income", "changed_credit_limit", "outstanding_debt", "amount_invested_monthly", "monthly_balance")),
       ~ na_if(., as.character(!grepl("^(0|[1-9][0-9]*)$", .))) %>%
-      as.double
+      as.double(.)
   ))
   return(output)
 }
@@ -71,6 +73,7 @@ clean_delay_from_due_date <- function(df) {
 
 clean_num_of_delayed_payment <- function(df) {
   df$num_of_delayed_payment <- replace(df$num_of_delayed_payment, df$num_of_delayed_payment > 28, 28)
+  df$num_of_delayed_payment <- as.integer(df$num_of_delayed_payment)
   return(df)
 }
 
@@ -91,27 +94,28 @@ clean_amount_invested_monthly <- function(df) {
 }
 
 clean_num_of_loan <- function(df) {
-  df$num_of_loan <- replace(df$num_of_loan, df$num_of_loan < 0, NA)
+  df$num_of_loan <- replace(df$num_of_loan, df$num_of_loan < 0, NA_integer_)
   df$num_of_loan <- replace(df$num_of_loan, df$num_of_loan > 9, 9)
+  df$num_of_loan <- as.integer(df$num_of_loan)
   return(df)
 }
 
 convert_strtofact <- function(df) {
   df$credit_mix <- df$credit_mix %>%
     na_if(., "") %>%
-    as.factor()
+    as.factor(.)
 
   df$occupation <- df$occupation %>%
     na_if(., "") %>%
-    as.factor()
+    as.factor(.)
 
   df$payment_of_min_amount <- df$payment_of_min_amount %>%
     na_if(., "NM") %>%
-    as.factor()
+    as.factor(.)
 
   df$payment_behaviour <- df$payment_behaviour %>%
     na_if(., "!@9#%8") %>%
-    as.factor()
+    as.factor(.)
 
   return(df)
 }
