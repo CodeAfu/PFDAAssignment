@@ -2,6 +2,7 @@ library(tidyverse)
 library(mice)
 library(stringr)
 
+source('functions.R')
 
 clean_df_chars <- function(df) {
   # output <- df %>%
@@ -64,26 +65,34 @@ clean_num_credit_cards <- function(df) {
 
 clean_interest_rate <- function(df) {
   df$interest_rate <- replace(df$interest_rate, df$interest_rate > 34, NA)
+  df$interest_rate <- ifelse(is.na(df$interest_rate), 
+                             as.integer(mean(df$interest_rate, na.rm = TRUE)),
+                             df$interest_rate)
   return(df)
 }
 
 clean_delay_from_due_date <- function(df) {
   df$delay_from_due_date <- replace(df$delay_from_due_date, df$delay_from_due_date < 0, NA)
-  
-  df$delay_from_due_date <- ifelse(is.na(df$delay_from_due_date),
-                                   is.integer(median(df$delay_from_due_date, na.rm = TRUE)),
-                                   df$delay_from_due_date) 
+  # df$delay_from_due_date <- ifelse(is.na(df$delay_from_due_date),
+                                  #  as.integer(median(df$delay_from_due_date, na.rm = TRUE)),
+                                  #  df$delay_from_due_date) 
   return(df)
 }
 
 clean_num_of_delayed_payment <- function(df) {
   df$num_of_delayed_payment <- replace(df$num_of_delayed_payment, df$num_of_delayed_payment > 28, 28)
+  df$num_of_delayed_payment <- ifelse(is.na(df$num_of_delayed_payment),
+                                      get_mode(df$num_of_delayed_payment),
+                                      df$num_of_delayed_payment)
   df$num_of_delayed_payment <- as.integer(df$num_of_delayed_payment)
   return(df)
 }
 
 clean_num_credit_inquiries <- function(df) {
   df$num_credit_inquiries <- replace(df$num_credit_inquiries, df$num_credit_inquiries > 17, 17)
+  df$num_credit_inquiries <- ifelse(is.na(df$num_credit_inquiries),
+                                      median(df$num_credit_inquiries),
+                                      df$num_credit_inquiries)
   return(df)
 }
 
@@ -121,6 +130,23 @@ clean_num_of_loan <- function(df) {
   df$num_of_loan <- replace(df$num_of_loan, df$num_of_loan < 0, NA_integer_)
   df$num_of_loan <- replace(df$num_of_loan, df$num_of_loan > 9, 9)
   df$num_of_loan <- as.integer(df$num_of_loan)
+
+  return(df)
+}
+
+clean_montly_inhand_salary <- function(df) {
+  # Predictive Imputation
+  relevant_features <- df %>% select(age, annual_income, num_bank_accounts, num_credit_card, 
+                                    interest_rate, delay_from_due_date, num_of_delayed_payment, changed_credit_limit, 
+                                    num_credit_inquiries, outstanding_debt, credit_utilization_ratio, total_emi_per_month, 
+                                    amount_invested_monthly, monthly_balance)
+
+  df_for_imputation <- cbind(relevant_features, monthly_inhand_salary = df$monthly_inhand_salary)
+  imputed_data <- mice(df_for_imputation, method = 'norm.predict', m = 1, maxit = 5, seed = 123)
+  completed_data <- complete(imputed_data, 1)
+  df$monthly_inhand_salary = completed_data$monthly_inhand_salary
+
+  df$monthly_inhand_salary <- replace(df$monthly_inhand_salary, df$monthly_inhand_salary < 0, 0)
 
   return(df)
 }

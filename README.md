@@ -21,14 +21,14 @@
     - total_emi_per_month **(cleaning approach can be alot better)**
     - amount_invested_monthly **(review please)**
 - Deal with nulls properly ❌
-    - monthly_inhand_salary (dbl) - Data is slightly skewed so use **median**
-    - interest_rate (int) - Data resembles normal distribution, so use **mean**
-    - num_of_loan (int) - Common number of loans, Predictive Imputation ✅
+    - monthly_inhand_salary (dbl) - Data is skewed, other relavant columns exist so **Predictive Imputation** ✅
+    - interest_rate (int) - Data resembles normal distribution, so use **mean** ✅
+    - num_of_loan (int) - Common number of loans, **Predictive Imputation** ✅
     - delay_from_due_date (int) - Data slightly skewed, **median** ✅
-    - num_of_delayed_payment (int) - Normal Distribution, **mode**
+    - num_of_delayed_payment (int) - Normal Distribution, **mode** ✅
     - changed_credit_limit (dbl) - Data skewed, **median** ✅
-    - num_credit_inquiries (dbl) - Data Skewed, **median** **(need to check clean method for this)**
-    - payment_of_min_amount (fct) **(unsure if need to do anything)**
+    - num_credit_inquiries (dbl) - Data Skewed, **median** **(need to check clean method for this)** ✅
+    - payment_of_min_amount (fct) **(unsure if need to do anything)** 
 
 
 
