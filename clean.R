@@ -73,9 +73,9 @@ clean_interest_rate <- function(df) {
 
 clean_delay_from_due_date <- function(df) {
   df$delay_from_due_date <- replace(df$delay_from_due_date, df$delay_from_due_date < 0, NA)
-  # df$delay_from_due_date <- ifelse(is.na(df$delay_from_due_date),
-                                  #  as.integer(median(df$delay_from_due_date, na.rm = TRUE)),
-                                  #  df$delay_from_due_date) 
+  df$delay_from_due_date <- ifelse(is.na(df$delay_from_due_date),
+                                   as.integer(median(df$delay_from_due_date, na.rm = TRUE)),
+                                   df$delay_from_due_date) 
   return(df)
 }
 
@@ -91,8 +91,8 @@ clean_num_of_delayed_payment <- function(df) {
 clean_num_credit_inquiries <- function(df) {
   df$num_credit_inquiries <- replace(df$num_credit_inquiries, df$num_credit_inquiries > 17, 17)
   df$num_credit_inquiries <- ifelse(is.na(df$num_credit_inquiries),
-                                      median(df$num_credit_inquiries),
-                                      df$num_credit_inquiries)
+                                    median(df$num_credit_inquiries, na.rm = TRUE),
+                                    df$num_credit_inquiries)
   return(df)
 }
 
