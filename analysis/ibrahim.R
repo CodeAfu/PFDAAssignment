@@ -37,7 +37,7 @@ box_plot <- function() {
 bar_plot <- function() {
   plot <- ggplot(df, aes(x = credit_score)) +
     geom_bar(fill = credit_score_colors) + 
-    labs(title = "Credit Score Distribution", x = "Credit Score", y = "Count")
+    labs(title = "Distribution of Credit Score", x = "Credit Score", y = "Count")
 
   ggsave("./plots/outstanding_debt/barplot.png", plot = plot, width = 16, height = 10)
 }
@@ -52,7 +52,7 @@ bar_plot_occupation <- function() {
   ggsave("./plots/outstanding_debt/barplot_occupation.png", plot = plot, width = 16, height = 10)
 }
 
-bar_plot_interestrate <- function() {
+bar_plot_ir <- function() {
   plot <- ggplot(df, aes(x = credit_score, fill = credit_score)) +
     geom_bar() + 
     facet_wrap(~interest_rate, labeller = labeller(interest_rate = label_both)) +
@@ -95,29 +95,29 @@ histogram_faceted <- function() {
   ggsave("./plots/outstanding_debt/facted_hist.png", plot = plot, width = 16, height = 10)
 }
 
-cor_matrix <- function() {
+corr_matrix <- function() {
   num_data <- df %>%
     select(outstanding_debt, monthly_inhand_salary, num_bank_accounts, num_credit_card, 
       interest_rate, num_of_loan, delay_from_due_date, num_of_delayed_payment, 
       changed_credit_limit, num_credit_inquiries, credit_utilization_ratio, total_emi_per_month, 
       amount_invested_monthly, monthly_balance)
 
-  cor_matrix <- cor(num_data, use = "complete.obs")
+  corr_matrix <- cor(num_data, use = "complete.obs")
 
-  plot <- ggcorrplot(cor_matrix, method = "circle", type = "lower", lab = TRUE, lab_size = 3)
+  plot <- ggcorrplot(corr_matrix, method = "circle", type = "lower", lab = TRUE, lab_size = 3)
 
   ggsave("./plots/outstanding_debt/corr_matrix.png", plot = plot, width = 10, height = 10)
 }
 
 
-# distribution_outstanding_debt()
+distribution_outstanding_debt()
 box_plot()
-# bar_plot()
-# bar_plot_occupation()
-# bar_plot_interestrate()
-# scatter_plot_regression()
-# histogram_faceted()
-# cor_matrix()
+bar_plot()
+bar_plot_occupation()
+bar_plot_ir()
+scatter_plot_regression()
+histogram_faceted()
+cor_matrix()
 
 
 
