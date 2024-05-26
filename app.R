@@ -12,7 +12,6 @@ df <- clean_df_chars(df)
 
 df <- convert_chrtoint(df)
 df <- convert_chrtodbl(df)
-df <- convert_strtofact(df)
 
 df <- clean_occupation(df)
 df <- clean_num_bank_accounts(df)
@@ -26,6 +25,8 @@ df <- clean_amount_invested_monthly(df)
 df <- clean_changed_credit_limit(df)
 df <- clean_num_of_loan(df)
 df <- clean_montly_inhand_salary(df)
+
+df <- convert_strtofact(df)
 
 max       (df$outstanding_debt, na.rm = TRUE)
 min       (df$outstanding_debt, na.rm = TRUE)
