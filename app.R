@@ -40,6 +40,8 @@ unique    (df$outstanding_debt)
 hist      (df$outstanding_debt)
 class     (df$outstanding_debt)
 
-View(df)
-
 write.csv(df, "./data/clean_credit_score.csv", row.names=FALSE)
+
+levels(df$credit_score)
+
+

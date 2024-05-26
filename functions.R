@@ -5,3 +5,8 @@ get_mode <- function(x) {
   tab <- tabulate(match(x, u))
   u[tab == max(tab)]
 }
+
+
+interest_rate_labeller <- function(variable, value) {
+  return(paste("Interest Rate:", value))
+}

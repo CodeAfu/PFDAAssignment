@@ -168,6 +168,8 @@ convert_strtofact <- function(df) {
     na_if(., "!@9#%8") %>%
     as.factor(.)
 
+  df$credit_score <- factor(df$credit_score, levels = c("Good", "Standard", "Poor"), ordered = TRUE)
+
   return(df)
 }
 
