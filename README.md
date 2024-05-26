@@ -8,10 +8,10 @@
  <h3><b><u>Customers with high Delay_from_due_date, high Interest_Rate, high Outstanding_Debt, and high Total_EMI_per_month have a low credit score</u></b></h3>
 
 ## Objectives
-- To investigate the impact of Delay_from_due_date to the credit score
-- To investigate the impact of Interest_Rate to the credit score
-- To investigate the impact of Outstanding_Debt to the credit score
-- To investigate the impact of Total_EMI_per_month to the credit score
+- To investigate the impact of delay_from_due_date to the credit score
+- To investigate the impact of interest_rate to the credit score
+- To investigate the impact of outstanding_debt to the credit score
+- To investigate the impact of total_emi_per_month to the credit score
 
 ## TODO
 ✅ = COMPLETED <br>
@@ -20,7 +20,7 @@
 - Clean Data ❓
     - total_emi_per_month **(cleaning approach can be alot better)**
     - amount_invested_monthly **(review please)**
-- Deal with nulls properly ❌
+- Deal with nulls properly ✅
     - monthly_inhand_salary (dbl) - Data is skewed, other relavant columns exist so **Predictive Imputation** ✅
     - interest_rate (int) - Data resembles normal distribution, so use **mean** ✅
     - num_of_loan (int) - Common number of loans, **Predictive Imputation** ✅
@@ -29,7 +29,6 @@
     - changed_credit_limit (dbl) - Data skewed, **median** ✅
     - num_credit_inquiries (dbl) - Data Skewed, **median** **(need to check clean method for this)** ✅
     - payment_of_min_amount (fct) **(unsure if need to do anything)** 
-
 
 
 ## Clean Tasks:
