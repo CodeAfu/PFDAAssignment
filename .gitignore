@@ -75,4 +75,10 @@ rsconnect/
 .history
 .ionide
 
+
+### Ibrahim
+analysis/ibrahim.R
+analysis/ibrahim.extras.R
+analysis/guide.md
+
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,r
