@@ -5,20 +5,12 @@ library(stringr)
 source('functions.R')
 
 clean_df_chars <- function(df) {
-  # output <- df %>%
-  #   mutate(across(c(Occupation, Credit_Mix, Num_of_Delayed_Payment, Outstanding_Debt, 
-  #                       Changed_Credit_Limit, Age), 
-  #                 ~ str_replace_all(., "_", "")), 
-  #          across(c(Delay_from_due_date, Num_of_Delayed_Payment, Age), 
-  #                 ~ if_else(is.na(.), NA_character_, as.character(.)) %>%
-  #                   str_replace_all("-", ""))) 
-
   output <- df %>%
     mutate(across(
-      starts_with(c("annual_income", "occupation", "credit_mix", "num_of_delayed_payment", "outstanding_debt", "changed_credit_limit", "age")),
+      starts_with(c("annual_income", "occupation", "credit_mix", "num_of_delayed_payment", 
+                    "outstanding_debt", "changed_credit_limit", "age")),
       ~ gsub("[-_]", "", .)
   ))
-
   return(output)
 }
 
@@ -41,10 +33,24 @@ clean_occupation <- function(df) {
   return(output)
 }
 
+clean_age <- function(df) {
+  output <- df %>%
+    mutate(age = ifelse(age >= 56, NA, age))
+
+  vars <- c("age", "annual_income", "num_bank_accounts", "num_credit_card", "interest_rate", "num_of_loan")
+
+  imputed_data <- mice(output[vars], method = 'pmm', m = 1, maxit = 5, seed = 123)
+  completed_data <- complete(imputed_data, 1)
+  output$age = completed_data$age
+
+  return(output)
+}
+
 convert_chrtodbl <- function(df) {
   output <- df %>%
     mutate(across(
-      starts_with(c("annual_income", "changed_credit_limit", "outstanding_debt", "amount_invested_monthly", "monthly_balance")),
+      starts_with(c("annual_income", "changed_credit_limit", "outstanding_debt", 
+                    "amount_invested_monthly", "monthly_balance")),
       ~ na_if(., as.character(!grepl("^(0|[1-9][0-9]*)$", .))) %>%
       as.double(.)
   ))
@@ -134,7 +140,7 @@ clean_num_of_loan <- function(df) {
   return(df)
 }
 
-clean_montly_inhand_salary <- function(df) {
+clean_monthly_inhand_salary <- function(df) {
   # Predictive Imputation
   relevant_features <- df %>% select(age, annual_income, num_bank_accounts, num_credit_card, 
                                     interest_rate, delay_from_due_date, num_of_delayed_payment, changed_credit_limit, 

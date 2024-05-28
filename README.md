@@ -8,10 +8,10 @@
  <h3><b><u>Customers with high Delay_from_due_date, high Interest_Rate, high Outstanding_Debt, and high Total_EMI_per_month have a low credit score</u></b></h3>
 
 ## Objectives
-- To investigate the impact of delay_from_due_date to the credit score
-- To investigate the impact of interest_rate to the credit score
-- To investigate the impact of outstanding_debt to the credit score
-- To investigate the impact of total_emi_per_month to the credit score
+- To investigate the impact of delay_from_due_date to the credit_score
+- To investigate the impact of interest_rate to the credit_score
+- To investigate the impact of outstanding_debt to the credit_score
+- To investigate the impact of total_emi_per_month to the credit_score
 
 ## TODO
 ✅ = COMPLETED <br>
