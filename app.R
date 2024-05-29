@@ -9,6 +9,8 @@ source("functions.R")
 
 df <- read.csv("./data/credit_score.csv")
 
+class(df$credit_mix)
+
 names(df) <- tolower(names(df))
 
 df <- clean_df_chars(df)
