@@ -1,3 +1,9 @@
+- [Hypothesis](#hypothesis)
+- [Objectives](#objectives)
+- [TODO](#todo)
+- [Clean Tasks](#clean-tasks)
+- [Working on this repo](#working-on-this-repo)
+
 ## Hypothesis
  <b><u>Independent Variables: </u></b> 
 * Delay_from_due_date

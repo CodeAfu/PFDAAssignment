@@ -1,10 +1,20 @@
+install.packages("tidyverse")
+install.packages("ggplot2")
+install.packages("RColorBrewer")
+install.packages("ggcorrplot")
+install.packages("GGally")
+install.packages("ggExtra")
+install.packages("caret")
+install.packages("nnet")
+
 library(tidyverse)
 library(ggplot2)
 library(RColorBrewer)
 library(ggcorrplot)
 library(GGally)
 library(ggExtra)
-
+library(caret)
+library(nnet)
 
 source("./functions.R")
 
@@ -16,13 +26,41 @@ color_five <- "#E1C335"
 
 colors_credit_score <- c(color_three, color_five, color_two)
 
+
+
 df <- read.csv("./data/clean_credit_score.csv")
 df$credit_score <- factor(df$credit_score, levels = c("Good", "Standard", "Poor"), ordered = TRUE)
 df$month <- factor(df$month, levels = c("January", "February", "March", "April", "May", "June", 
                                         "July", "August", "September", "October", "November", "December"), ordered = TRUE)
 glimpse(df)
 
-distribution_outstanding_debt <- function() {
+
+interaction_plot <- function() {
+  model <- multinom(credit_score ~ outstanding_debt * interest_rate, data = df)
+  
+  new_data <- expand.grid(outstanding_debt = seq(min(df$outstanding_debt), max(df$outstanding_debt), length.out = 100),
+                          interest_rate = 1:34)
+  
+  predicted <- predict(model, newdata = new_data, type = "probs")
+  predicted <- as.data.frame(predicted)
+  predicted$Outstanding_Debt <- new_data$outstanding_debt
+  predicted$Interest_Rate <- new_data$interest_rate
+  
+  predicted_long <- gather(predicted, key = "Credit_Score", value = "Probability", -Outstanding_Debt, -Interest_Rate)
+  
+  plot <- ggplot(predicted_long, aes(x = Outstanding_Debt, y = Probability, color = Credit_Score)) +
+    geom_line() +
+    facet_wrap(~ Interest_Rate, scales = "free_y", ncol = 6, labeller = labeller(Interest_Rate = label_both)) +
+    labs(title = "Interaction Plot of Outstanding Debt and Interest Rate on Credit Score",
+         x = "Outstanding Debt",
+         y = "Predicted Probability",
+         color = "Credit Score") +
+    scale_color_manual(values = colors_credit_score)
+  
+  ggsave("./plots/outstanding_debt/interaction_plot.png", plot = plot, width = 16, height = 10)
+}
+
+distribution_outstanding_debt_plot <- function() {
   plot <- ggplot(df, aes(x = outstanding_debt)) +
     geom_histogram(binwidth = 100, fill = color_one, color = "black", alpha = 0.7) +
     labs(title = "Distribution of Outstanding Debt", x = "Outstanding Debt", y = "Count")
@@ -233,13 +271,12 @@ bee_swarm_plot <- function() {
   ggsave("./plots/outstanding_debt/beeswarm_plot_by_credit_score.png", plot = plot, width = 16, height = 10)
 }
 
-
 scatter_plot_ir_creditscore <- function() {
   plot <- ggplot(df, aes(x = outstanding_debt, y = interest_rate, color = credit_score)) +
     geom_point(size = 1) +
     geom_smooth(color = "tomato4") +
     facet_wrap(~ credit_score, ncol = 1) +
-    scale_color_manual(values = colors_credit_score) +    
+    scale_color_manual(values = colors_credit_score) +
     labs(title = "Scatter Plot of Outstanding Debt by Interest Rate for Credit Score", x = "Outstanding Debt", y = "Interest Rate")
 
   ggsave("./plots/outstanding_debt/scatterplot_ir_fCreditScore.png", plot = plot, width = 16, height = 10)
@@ -247,20 +284,21 @@ scatter_plot_ir_creditscore <- function() {
 
 summary(df$outstanding_debt)
 
-
-distribution_outstanding_debt()
-density_crscore_plot()
-density_crscore_fnumloan_plot()
-density_crscore_fage_plot()
-scatter_plot()
-violin_plot()
-box_plot()
-bar_plot()
-bar_plot_occupation()
-bar_plot_ranges()
-scatter_plot_regression_ir()
-histogram_faceted()
-corr_matrix()
-boxplot_loan_faceted()
-scatter_plot_ir_creditscore()
-bee_swarm_plot()
+# interaction_plot()
+# distribution_outstanding_debt()
+# density_crscore_plot()
+# density_crscore_fnumloan_plot()
+# density_crscore_fage_plot()
+# scatter_plot()
+# violin_plot()
+# box_plot()
+# boxplot_loan_faceted()
+# bar_plot()
+# bar_plot_occupation()
+# bar_plot_ranges()
+# scatter_plot_regression_ir()
+# histogram_faceted()
+# corr_matrix()
+# boxplot_loan_faceted()
+# scatter_plot_ir_creditscore()
+# bee_swarm_plot()
