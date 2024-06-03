@@ -26,8 +26,6 @@ color_five <- "#E1C335"
 
 colors_credit_score <- c(color_three, color_five, color_two)
 
-
-
 df <- read.csv("./data/clean_credit_score.csv")
 df$credit_score <- factor(df$credit_score, levels = c("Good", "Standard", "Poor"), ordered = TRUE)
 df$month <- factor(df$month, levels = c("January", "February", "March", "April", "May", "June", 
@@ -285,8 +283,7 @@ scatter_plot_ir_creditscore <- function() {
 summary(df$outstanding_debt)
 
 # interaction_plot()
-# distribution_outstanding_debt()
-# density_crscore_plot()
+density_crscore_plot()
 # density_crscore_fnumloan_plot()
 # density_crscore_fage_plot()
 # scatter_plot()
